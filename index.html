@@ -152,7 +152,7 @@ h2{
   font-family:'DM Mono',monospace;font-size:11px;
   color:var(--muted2);
 }
-.proj-arrow{color:var(--muted2);font-size:1rem;transition:color 0.18s}
+.proj-arrow{color:var(--muted2);transition:color 0.18s;width:16px;height:16px;flex-shrink:0;display:block}
 .proj:hover .proj-arrow{color:var(--text)}
 .proj-name{
   font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;
@@ -212,6 +212,7 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
   .proj{grid-template-columns:40px 1fr}
   .proj-arrow{display:none}
   .nav-links{gap:1.25rem}
+  .nav-badge-text{display:none}
 }
 </style>
 </head>
@@ -225,7 +226,7 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="nav-badge"><span class="dot"></span>Open to work</div>
+  <div class="nav-badge"><span class="dot"></span><span class="nav-badge-text">Open to work</span></div>
 </nav>
 
 <div class="hero">
@@ -322,7 +323,7 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
     <a class="proj" href="https://github.com/jakubjalcak1/zap-2025-13271-main-ps6" target="_blank" rel="noopener">
       <div class="proj-top">
         <div class="proj-num">01</div>
-        <div class="proj-arrow">↗</div>
+        <svg class="proj-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="proj-name">Snake Game</div>
       <div class="proj-desc">A fully functional terminal Snake game written in C. Features two difficulty levels — in level 2 the food starts moving. Includes a persistent highscore system that saves and loads between sessions.</div>
@@ -337,7 +338,7 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
     <a class="proj" href="https://github.com/jakubjalcak1/zap-2025-13271-main-ps4" target="_blank" rel="noopener">
       <div class="proj-top">
         <div class="proj-num">02</div>
-        <div class="proj-arrow">↗</div>
+        <svg class="proj-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="proj-name">Connect Four + Ball Sort Puzzle</div>
       <div class="proj-desc">Two interactive terminal games in C. Connect Four implements win detection across all four directions. Ball Sort Puzzle is a logic game with a color-coded grid field and move validation.</div>
@@ -351,7 +352,7 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
     <a class="proj" href="https://github.com/jakubjalcak1/zap-2025-13271-main-ps3" target="_blank" rel="noopener">
       <div class="proj-top">
         <div class="proj-num">03</div>
-        <div class="proj-arrow">↗</div>
+        <svg class="proj-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="proj-name">Hangman &amp; Morse Code Translator</div>
       <div class="proj-desc">Two C programs: a Hangman game that picks words randomly from a file using seek and stat, and a bidirectional Morse code translator that encodes and decodes any text with full input validation.</div>
@@ -366,7 +367,7 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
     <a class="proj" href="https://github.com/jakubjalcak1/didi-stranka-main" target="_blank" rel="noopener">
       <div class="proj-top">
         <div class="proj-num">04</div>
-        <div class="proj-arrow">↗</div>
+        <svg class="proj-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="proj-name">Valentine's Web Experience</div>
       <div class="proj-badge">First ever project — 2 weeks into programming</div>
@@ -394,27 +395,28 @@ footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);lett
       <em>something together.</em>
     </div>
     <div class="contact-items">
-      <a class="contact-item" href="mailto:jakubjalcak1@gmail.com">
+      <div class="contact-item" onclick="navigator.clipboard.writeText('jakubjalcak1@gmail.com').then(()=>{var t=document.getElementById('copied-toast');t.style.opacity='1';setTimeout(()=>t.style.opacity='0',2000)})" style="cursor:pointer">
         <div class="ci-left">
           <span class="ci-label">Email</span>
           <span class="ci-value">jakubjalcak1@gmail.com</span>
         </div>
-        <span class="ci-arrow">↗</span>
-      </a>
+        <svg class="ci-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;flex-shrink:0"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div id="copied-toast" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;padding:0.6rem 1.25rem;opacity:0;transition:opacity 0.2s;pointer-events:none;">Email copied!</div>
       <a class="contact-item" href="https://github.com/jakubjalcak1" target="_blank">
         <div class="ci-left">
           <span class="ci-label">GitHub</span>
           <span class="ci-value">github.com/jakubjalcak1</span>
         </div>
-        <span class="ci-arrow">↗</span>
+        <svg class="ci-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;flex-shrink:0"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <div class="contact-item">
+      <a class="contact-item" href="https://www.linkedin.com/in/jakub-jalčak-7577963a1" target="_blank" rel="noopener">
         <div class="ci-left">
           <span class="ci-label">LinkedIn</span>
-          <span class="ci-value">Add your LinkedIn</span>
+          <span class="ci-value">linkedin.com/in/jakub-jalcak</span>
         </div>
-        <span class="ci-arrow">↗</span>
-      </div>
+        <svg class="ci-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;flex-shrink:0"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
