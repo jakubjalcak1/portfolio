@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jakub Jalcak – Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf9f6;
+  --surface:#f2f0eb;
+  --surface2:#e8e5de;
+  --text:#1c1b18;
+  --muted:#7a7870;
+  --muted2:#a09e98;
+  --border:rgba(28,27,24,0.1);
+  --border2:rgba(28,27,24,0.18);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Lora',Georgia,serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;line-height:1.7;
+  overflow-x:hidden;
+}
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,249,246,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 3rem;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'DM Mono',monospace;
+  font-size:13px;letter-spacing:0.05em;
+  color:var(--text);text-decoration:none;font-weight:500;
+}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{
+  font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:0.09em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.15s;
+  cursor:pointer;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-badge{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.07em;
+  color:var(--muted);display:flex;align-items:center;gap:0.45rem;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0}
+.hero{
+  padding:3rem 3rem 5rem;
+  border-bottom:1px solid var(--border);
+  max-width:900px;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:1.75rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--muted2)}
+h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(3.2rem,7vw,5.5rem);
+  font-weight:800;line-height:0.95;
+  letter-spacing:-0.03em;margin-bottom:1rem;
+}
+.role{
+  font-family:'Lora',Georgia,serif;
+  font-style:italic;font-weight:400;
+  font-size:clamp(1.3rem,2.5vw,2rem);
+  color:var(--muted);letter-spacing:0;
+  margin-bottom:2.5rem;display:block;
+}
+.hero-desc{
+  font-size:16px;color:var(--muted);line-height:1.8;
+  max-width:560px;margin-bottom:2.75rem;
+}
+.hero-desc strong{color:var(--text);font-weight:400}
+.hero-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2.75rem}
+.tag{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.05em;
+  border:1px solid var(--border2);color:var(--muted);
+  padding:0.28rem 0.7rem;
+}
+.tag.strong{border-color:var(--text);color:var(--text);background:var(--surface)}
+.hero-ctas{display:flex;gap:0.75rem}
+.btn{
+  font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;
+  padding:0.72rem 1.5rem;text-decoration:none;cursor:pointer;
+  display:inline-block;transition:all 0.18s;
+}
+.btn-dark{background:var(--text);color:var(--bg);border:1px solid var(--text)}
+.btn-dark:hover{background:#3a3835;border-color:#3a3835}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-outline:hover{background:var(--surface)}
+section{padding:5.5rem 3rem;border-bottom:1px solid var(--border)}
+.sec-header{margin-bottom:3.5rem}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:0.5rem;
+}
+h2{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(1.7rem,3vw,2.5rem);
+  font-weight:700;letter-spacing:-0.02em;
+}
+.about-cols{display:grid;grid-template-columns:3fr 2fr;gap:5rem;align-items:start}
+.about-body p{font-size:15px;color:var(--muted);margin-bottom:1.1rem;line-height:1.85}
+.about-body p strong{color:var(--text);font-weight:500}
+.about-meta{display:flex;flex-direction:column}
+.meta-row{padding:0.9rem 0;border-bottom:1px solid var(--border)}
+.meta-row:first-child{border-top:1px solid var(--border)}
+.meta-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:0.2rem;
+}
+.meta-value{font-size:14px;color:var(--text)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border)}
+.skill-cat{padding:2rem 1.75rem;border-right:1px solid var(--border)}
+.skill-cat:last-child{border-right:none}
+.skill-cat-name{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--muted2);margin-bottom:1.25rem;
+}
+.skill-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.5rem 0;border-bottom:1px solid var(--border);
+}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:14px;color:var(--text)}
+.pips{display:flex;gap:3px}
+.pip{width:7px;height:7px;border-radius:50%;background:var(--surface2)}
+.pip.on{background:var(--text)}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.proj{
+  padding:2.25rem 2rem;
+  background:var(--bg);
+  display:flex;flex-direction:column;gap:0;
+  cursor:pointer;transition:background 0.18s;
+  text-decoration:none;color:inherit;
+}
+.proj:hover{background:var(--surface)}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem}
+.proj-num{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--muted2);
+}
+.proj-arrow{color:var(--muted2);font-size:1rem;transition:color 0.18s}
+.proj:hover .proj-arrow{color:var(--text)}
+.proj-name{
+  font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;
+  letter-spacing:-0.01em;margin-bottom:0.6rem;
+}
+.proj-desc{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:1.1rem;flex:1}
+.proj-badge{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.07em;
+  background:var(--surface2);color:var(--muted);
+  padding:0.2rem 0.6rem;display:inline-block;margin-bottom:0.75rem;
+}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:auto}
+.ptag{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.05em;
+  text-transform:uppercase;border:1px solid var(--border);
+  color:var(--muted);padding:0.18rem 0.55rem;
+}
+.ptag.hl{border-color:var(--text);color:var(--text)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.contact-heading{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:800;
+  letter-spacing:-0.025em;line-height:1.08;
+}
+.contact-heading em{
+  display:block;
+  font-family:'Lora',Georgia,serif;
+  font-style:italic;font-weight:400;color:var(--muted);
+}
+.contact-items{display:flex;flex-direction:column}
+.contact-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 1.25rem;
+  border:1px solid var(--border);border-bottom:none;
+  background:var(--bg);cursor:pointer;
+  transition:background 0.15s;text-decoration:none;
+}
+.contact-item:last-child{border-bottom:1px solid var(--border)}
+.contact-item:hover{background:var(--surface)}
+.ci-left{display:flex;flex-direction:column;gap:0.15rem}
+.ci-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)}
+.ci-value{font-size:13px;color:var(--text)}
+.ci-arrow{color:var(--muted2);font-size:0.85rem}
+footer{
+  padding:1.75rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+footer p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);letter-spacing:0.05em}
+@media(max-width:680px){
+  nav{padding:0 1.25rem}
+  .hero,section,footer{padding-left:1.25rem;padding-right:1.25rem}
+  .hero{padding-top:4.5rem;padding-bottom:4rem}
+  .about-cols,.contact-grid,.projects{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-cat{border-right:none;border-bottom:1px solid var(--border)}
+  .skill-cat:last-child{border-bottom:none}
+  .proj{grid-template-columns:40px 1fr}
+  .proj-arrow{display:none}
+  .nav-links{gap:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">JJ.dev</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-badge"><span class="dot"></span>Open to work</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Košice · TUKE · 2026</div>
+  <h1>Jakub<br>Jalcak</h1>
+  <span class="role">Systems &amp; AI developer</span>
+  <p class="hero-desc">
+    I write <strong>C, C++, Python</strong> and build web interfaces. Studying <strong>Intelligent Systems</strong> at TUKE — interested in how machines think and how low-level code powers high-level ideas.
+  </p>
+  <div class="hero-stack">
+    <span class="tag strong">C</span>
+    <span class="tag strong">C++</span>
+    <span class="tag">Python</span>
+    <span class="tag">JavaScript</span>
+    <span class="tag">HTML &amp; CSS</span>
+    <span class="tag">AI / ML</span>
+  </div>
+  <div class="hero-ctas">
+    <a class="btn btn-dark" href="#projects">View projects</a>
+    <a class="btn btn-outline" href="#contact">Get in touch</a>
+  </div>
+</div>
+
+<section id="about">
+  <div class="sec-header">
+    <div class="sec-label">01 — About</div>
+    <h2>Who I am</h2>
+  </div>
+  <div class="about-cols">
+    <div class="about-body">
+      <p>I'm a developer and student at TUKE, where I study <strong>Intelligent Systems</strong> — a field at the intersection of classical computer science and modern AI.</p>
+      <p>I believe in understanding things from the ground up. That means starting with <strong>memory management and pointers</strong> in C before reaching for abstractions, and understanding the math before applying a model.</p>
+      <p>Outside of university I enjoy building projects that combine different layers — from terminal games in C, to creative web experiences built from scratch without frameworks.</p>
+    </div>
+    <div class="about-meta">
+      <div class="meta-row">
+        <div class="meta-label">University</div>
+        <div class="meta-value">TUKE – Intelligent Systems</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Focus</div>
+        <div class="meta-value">Systems programming, AI/ML</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Location</div>
+        <div class="meta-value">Košice, Slovakia</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Languages</div>
+        <div class="meta-value">C, C++, Python, JS</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">Status</div>
+        <div class="meta-value">Open to collaboration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-header">
+    <div class="sec-label">02 — Skills</div>
+    <h2>What I work with</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-cat">
+      <div class="skill-cat-name">Systems</div>
+      <div class="skill-item"><span class="skill-name">C</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+      <div class="skill-item"><span class="skill-name">C++</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Algorithms</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-name">AI / Data</div>
+      <div class="skill-item"><span class="skill-name">Python</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Machine learning</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Data analysis</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-name">Web</div>
+      <div class="skill-item"><span class="skill-name">HTML &amp; CSS</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div></div>
+      <div class="skill-item"><span class="skill-name">JavaScript</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div></div>
+      <div class="skill-item"><span class="skill-name">UI design</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-header">
+    <div class="sec-label">03 — Projects</div>
+    <h2>Selected work</h2>
+  </div>
+  <div class="projects">
+
+    <a class="proj" href="https://github.com/jakubjalcak1/zap-2025-13271-main-ps6" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-num">01</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-name">Snake Game</div>
+      <div class="proj-desc">A fully functional terminal Snake game written in C. Features two difficulty levels — in level 2 the food starts moving. Includes a persistent highscore system that saves and loads between sessions.</div>
+      <div class="proj-tags">
+        <span class="ptag hl">C</span>
+        <span class="ptag">Game logic</span>
+        <span class="ptag">File I/O</span>
+        <span class="ptag">Terminal UI</span>
+      </div>
+    </a>
+
+    <a class="proj" href="https://github.com/jakubjalcak1/zap-2025-13271-main-ps4" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-num">02</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-name">Connect Four + Ball Sort Puzzle</div>
+      <div class="proj-desc">Two interactive terminal games in C. Connect Four implements win detection across all four directions. Ball Sort Puzzle is a logic game with a color-coded grid field and move validation.</div>
+      <div class="proj-tags">
+        <span class="ptag hl">C</span>
+        <span class="ptag">Modular design</span>
+        <span class="ptag">Logic games</span>
+      </div>
+    </a>
+
+    <a class="proj" href="https://github.com/jakubjalcak1/zap-2025-13271-main-ps3" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-num">03</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-name">Hangman &amp; Morse Code Translator</div>
+      <div class="proj-desc">Two C programs: a Hangman game that picks words randomly from a file using seek and stat, and a bidirectional Morse code translator that encodes and decodes any text with full input validation.</div>
+      <div class="proj-tags">
+        <span class="ptag hl">C</span>
+        <span class="ptag">String processing</span>
+        <span class="ptag">File I/O</span>
+        <span class="ptag">Algorithms</span>
+      </div>
+    </a>
+
+    <a class="proj" href="https://github.com/jakubjalcak1/didi-stranka-main" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-num">04</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-name">Valentine's Web Experience</div>
+      <div class="proj-badge">First ever project — 2 weeks into programming</div>
+      <div class="proj-desc">Built as a personal gift just two weeks after writing my first line of code. Features parallax scrolling, an interactive Instagram-style post with a working like button, a dynamic photo gallery, and a JavaScript-generated calendar — all from scratch, no frameworks.</div>
+      <div class="proj-tags">
+        <span class="ptag hl">HTML</span>
+        <span class="ptag hl">CSS</span>
+        <span class="ptag hl">JavaScript</span>
+        <span class="ptag">Parallax</span>
+        <span class="ptag">Creative coding</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-header">
+    <div class="sec-label">04 — Contact</div>
+    <h2>Get in touch</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-heading">
+      Let's build<br>
+      <em>something together.</em>
+    </div>
+    <div class="contact-items">
+      <a class="contact-item" href="mailto:jakubjalcak1@gmail.com">
+        <div class="ci-left">
+          <span class="ci-label">Email</span>
+          <span class="ci-value">jakubjalcak1@gmail.com</span>
+        </div>
+        <span class="ci-arrow">↗</span>
+      </a>
+      <a class="contact-item" href="https://github.com/jakubjalcak1" target="_blank">
+        <div class="ci-left">
+          <span class="ci-label">GitHub</span>
+          <span class="ci-value">github.com/jakubjalcak1</span>
+        </div>
+        <span class="ci-arrow">↗</span>
+      </a>
+      <div class="contact-item">
+        <div class="ci-left">
+          <span class="ci-label">LinkedIn</span>
+          <span class="ci-value">Add your LinkedIn</span>
+        </div>
+        <span class="ci-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 · Jakub Jalcak · Košice, Slovakia</p>
+  <p>Built with HTML · CSS · JS</p>
+</footer>
+
+</body>
+</html>
